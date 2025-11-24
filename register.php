@@ -1,6 +1,7 @@
 <?php
     include "header.php";
     include "connect.php";
+    include "DBHandler.php";
 ?>
 <div class="registration-bg">
     <div class="container">
@@ -20,35 +21,7 @@
                             $phone=$_POST['phone'];
                             $password=$_POST['password'];
                             $repassword=$_POST['repassword'];
-                            // echo $name.$email.$phone.$password.$repassword;
-                            
-
-                            if($password==$repassword)
-                            {
-                                $password=password_hash($password,PASSWORD_DEFAULT);
-                                $q="insert into users(userName,email,phone,password,created_at) values(?,?,?,?,curdate())";
-                                $stmt = $con->prepare($q);
-
-                                if ($stmt) {
-                                    $stmt->bind_param("ssss",$name,$email,$phone,$password);
-                                    
-                                    if($stmt->execute())
-                                    {
-                                        echo "<div class='alert alert-success'>Success! Account created.</div>";
-                                    }
-                                    else{
-                                        echo "<div class='alert alert-danger'>Not Success!!</div>";
-                                    }
-                                    $stmt->close();
-                                } else {
-                                    echo "DBError";
-                                }
-                            }
-                            else {
-                                echo "<div class='alert alert-warning'>Passwords do not match.</div>";
-            
-                            }
-                            
+                            registerUser($con,$name,$email,$phone,$password,$repassword);
                         }
                     ?>
                     <form action="register.php" method="POST">

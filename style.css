@@ -1,4 +1,4 @@
-:root {
+    :root {
             --bg-color: #000000;
             --text-color: #ffffff;
             --hover-color: #cccccc;
@@ -172,6 +172,77 @@
                 align-items: center;
             }
         }
+        /* Styling to create the "Floating Card" effect from the screenshot */
+    .room-card {
+        padding-bottom: 20px;
+    }
+
+    .room-img-wrapper {
+        overflow: hidden;
+        height: 350px; /* Fixed height for consistency */
+    }
+    
+    .room-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    /* Zoom effect on hover */
+    .room-card:hover .room-img-wrapper img {
+        transform: scale(1.05);
+    }
+
+    .room-info {
+        background: #fff;
+        width: 85%;
+        margin: -60px auto 0; /* This creates the overlap effect */
+        position: relative;
+        z-index: 10;
+        padding: 30px 20px;
+        transition: transform 0.3s;
+    }
+
+    .room-title {
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        margin-bottom: 0;
+    }
+
+    .room-desc {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    /* Button Styles to match Screenshot */
+    .btn-square {
+        border-radius: 0;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 1.5px;
+        font-weight: 700;
+        padding: 10px 20px;
+    }
+    
+    .btn-dark {
+        background-color: #000;
+        border-color: #000;
+    }
+
+    .btn-outline-dark {
+        border-color: #000;
+        color: #000;
+    }
+
+    .btn-outline-dark:hover {
+        background-color: #000;
+        color: #fff;
+    }
 /* --- REGISTRATION FORM STYLES --- */
 
 
@@ -253,3 +324,108 @@
     box-shadow: inset 0px 0px 15px rgba(41, 236, 19, 0.6);
 
 }
+
+/* *******For Room.php********* */
+    .section-title {
+        font-family: 'Cinzel', serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: #000;
+    }
+
+    .section-desc {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.8;
+        max-width: 90%;
+    }
+
+    .room-card {
+        background-color: #fff;
+        border: 1px solid #e0e0e0; 
+        transition: box-shadow 0.3s ease;
+        height: 100%;
+    }
+
+    .room-card:hover {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .room-image-container {
+        position: relative;
+        height: 350px; 
+        overflow: hidden;
+    }
+
+    .room-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .photo-badge {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: #000;
+        color: #fff;
+        padding: 10px 20px;
+        font-family: 'Lato', sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        display: flex;
+        align-items: center;
+    }
+
+    .room-content {
+        padding: 30px;
+    }
+
+    .room-name {
+        font-family: 'Cinzel', serif;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #000;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .arrow-icon {
+        font-size: 0.8rem;
+        transition: margin-left 0.3s;
+    }
+
+    .room-card:hover .arrow-icon {
+        margin-left: 15px !important; 
+    }
+
+    .amenity-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .amenity-list li {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.75rem; 
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #333;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .icon-width {
+        width: 30px;
+        display: inline-block;
+        color: #666;
+    }
