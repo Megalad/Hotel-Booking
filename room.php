@@ -1,9 +1,8 @@
 <?php 
     include 'header.php';
     include 'connect.php'; 
-    include 'DBHandler.php'; // Important: Include the functions file
+    include 'DBHandler.php'; 
 
-    // 1. Fetch the data
     $roomList = getRooms($con);
 ?>
 
@@ -12,6 +11,7 @@
     <div class="row mb-5">
         <div class="col-lg-8">
             <h2 class="section-title">GUEST ROOMS (<?php echo count($roomList); ?>)</h2>
+            
             <p class="section-desc">
                 Our stylish and well-appointed guest rooms offer the very best in comfort and privacy, while providing a peaceful retreat in which to relax and unwind throughout your stay.
             </p>
@@ -19,23 +19,20 @@
     </div>
 
     <div class="row g-5">
-        <!-- <img src="/images/rooms/deluxe/d1.png" alt=""> -->
+        
         
         <?php
             foreach($roomList as $room) {
-                // $imgUrl = !empty($room['image_url']) ? $room['image_url'] : 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070';
+                $imgUrl = $room['image_url'];
+                // echo $imgUrl;
+            
         ?>
-
+        
+        <!-- <img src="images/rooms/singleRoom/single_room1.png" alt=""> -->
         <div class="col-12 col-md-6">
             <div class="room-card">
                 <div class="room-image-container">
                     <img src="<?php echo $imgUrl; ?>" alt="<?php echo $room['roomTypeName']; ?>" class="room-img">
-                    
-                    <div class="photo-badge">
-                        <i class="fas fa-chevron-left fa-xs"></i>
-                        <span class="mx-2">1 / 3</span>
-                        <i class="fas fa-chevron-right fa-xs"></i>
-                    </div>
                 </div>
 
                 <div class="room-content">
@@ -49,14 +46,10 @@
                     </p>
 
                     <ul class="amenity-list">
-                        <li>
-                            <span class="icon-width"><i class="fas fa-bed"></i></span>
-                            One king or two twin beds
-                        </li>
                         
                         <li>
                             <span class="icon-width"><i class="fas fa-info-circle"></i></span>
-                            <?php echo substr($room['description'], 0, 50) . '...'; ?>
+                            <?php echo substr($room['description'], 0, 100) . '...'; ?>
                         </li>
                         
                         <li>

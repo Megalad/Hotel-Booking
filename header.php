@@ -43,7 +43,7 @@
                     
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="index.php">Hotel Overview</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Rooms</a></li>
+                        <li class="nav-item"><a class="nav-link" href="room.php">Rooms</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Dining</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
                     </ul>

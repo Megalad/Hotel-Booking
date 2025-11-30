@@ -85,4 +85,33 @@ function getRooms($con)
     }
 }
 
+function getRoomType($con)
+{
+    $sql = "SELECT 
+                rt.roomTypeID,
+                rt.roomTypeName,
+                rt.price,
+                rt.description,
+                rt.maxAdults,
+                rt.maxChildren,
+                rt.maxOccupancy,
+                ri.url AS image_url
+            FROM RoomType rt
+            LEFT JOIN RoomImage ri ON rt.roomTypeID = ri.roomType_ID
+            GROUP BY rt.roomTypeID";
+
+    
+    $result = $con->query($sql);
+
+    $rooms = array(); 
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $rooms[] = $row; 
+        }
+        return $rooms; 
+    } else {
+        return []; 
+    }
+}
 ?>
