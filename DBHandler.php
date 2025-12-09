@@ -114,4 +114,34 @@ function getRoomType($con)
         return []; 
     }
 }
+function getRoomTypeById($con, $id) {
+    $query = "SELECT * FROM RoomType WHERE roomTypeID = ?";
+    $stmt = mysqli_prepare($con, $query);
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    return mysqli_fetch_assoc($result);
+}
+
+function getRoomImages($con, $id) {
+    $query = "SELECT url FROM RoomImage WHERE roomType_ID = ?";
+    $stmt = mysqli_prepare($con, $query);
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    
+    $images = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        $images[] = $row['url'];
+    }
+    return $images;
+}
+
+function getSimilarRooms($con, $currentId) {
+    $query = "SELECT * FROM RoomType WHERE roomTypeID != ? LIMIT 3";
+    $stmt = mysqli_prepare($con, $query);
+    mysqli_stmt_bind_param($stmt, "i", $currentId);
+    mysqli_stmt_execute($stmt);
+    return mysqli_stmt_get_result($stmt);
+}
 ?>

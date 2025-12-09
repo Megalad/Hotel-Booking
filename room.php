@@ -20,25 +20,26 @@
 
     <div class="row g-5">
         
-        
         <?php
             foreach($roomList as $room) {
-                $imgUrl = $room['image_url'];
-                // echo $imgUrl;
-            
+                $roomID = $room['roomTypeID'];
+                
+                $imgUrl = isset($room['image_url']) && !empty($room['image_url']) ? $room['image_url'] : 'https://via.placeholder.com/600x400?text=Room';
         ?>
         
-        <!-- <img src="images/rooms/singleRoom/single_room1.png" alt=""> -->
         <div class="col-12 col-md-6">
             <div class="room-card">
-                <div class="room-image-container">
+                <a href="roomDetails.php?id=<?php echo $roomID; ?>" class="room-image-container d-block">
                     <img src="<?php echo $imgUrl; ?>" alt="<?php echo $room['roomTypeName']; ?>" class="room-img">
-                </div>
+                </a>
 
                 <div class="room-content">
+                    <!-- LINK 2: Make the Title Clickable -->
                     <h3 class="room-name">
-                        <?php echo $room['roomTypeName']; ?> 
-                        <i class="fas fa-arrow-right ms-2 arrow-icon"></i>
+                        <a href="roomDetails.php?id=<?php echo $roomID; ?>" class="text-decoration-none text-dark d-flex align-items-center">
+                            <?php echo $room['roomTypeName']; ?> 
+                            <i class="fas fa-arrow-right ms-2 arrow-icon"></i>
+                        </a>
                     </h3>
                     
                     <p class="mb-3 text-muted" style="font-size: 0.9rem;">
@@ -46,7 +47,6 @@
                     </p>
 
                     <ul class="amenity-list">
-                        
                         <li>
                             <span class="icon-width"><i class="fas fa-info-circle"></i></span>
                             <?php echo substr($room['description'], 0, 100) . '...'; ?>
@@ -69,6 +69,8 @@
 </div>
 
 <style>
+    /* ... existing styles ... */
+    
     .section-title {
         font-family: 'Cinzel', serif;
         text-transform: uppercase;
@@ -102,7 +104,7 @@
 
     .room-image-container {
         position: relative;
-        height: 300px; /* Fixed height for image */
+        height: 300px; 
         overflow: hidden;
     }
 
@@ -117,23 +119,9 @@
         transform: scale(1.05);
     }
 
-    .photo-badge {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        background-color: #000;
-        color: #fff;
-        padding: 8px 15px;
-        font-family: 'Lato', sans-serif;
-        font-size: 0.75rem;
-        letter-spacing: 2px;
-        display: flex;
-        align-items: center;
-    }
-
     .room-content {
         padding: 30px;
-        flex-grow: 1; /* Ensures cards align at bottom */
+        flex-grow: 1; 
     }
 
     .room-name {
@@ -144,9 +132,6 @@
         font-weight: 700;
         margin-bottom: 15px;
         color: #000;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
     }
 
     .arrow-icon {
